@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>LIONLAO</title>
+  <meta name="description" content="LIONLAO contact page" />
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0d1730;
+      --card:rgba(255,255,255,.05);
+      --card2:rgba(255,255,255,.03);
+      --border:rgba(255,255,255,.10);
+      --text:#f4f7fb;
+      --muted:#c7d2e6;
+      --gold:#f5c542;
+      --line:#25d366;
+      --msg:#1877f2;
+      --wa:#2fe07a;
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(245,197,66,.14), transparent 20%),
+        radial-gradient(circle at 90% 10%, rgba(24,119,242,.15), transparent 22%),
+        linear-gradient(135deg, var(--bg), var(--bg2) 62%, #07111f);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 24px));
+      margin:0 auto;
+      padding:16px 0 20px;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .brand .badge{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(245,197,66,.12);
+      border:1px solid rgba(245,197,66,.18);
+      color:var(--gold);
+      font-weight:900;
+      flex:0 0 auto;
+    }
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:1px;
+      color:var(--gold);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(245,197,66,.10);
+      border:1px solid rgba(245,197,66,.18);
+      color:#ffeab4;
+      font-size:13px;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap:16px;
+      margin-top:16px;
+      align-items:start;
+    }
+
+    .card{
+      background:linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero, .side{
+      padding:20px;
+    }
+
+    .hero-title{
+      margin:0 0 8px;
+      font-size: clamp(34px, 7vw, 58px);
+      line-height:1.02;
+      letter-spacing:.3px;
+      color:var(--gold);
+    }
+
+    .lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:16px;
+    }
+
+    .logo-shell{
+      margin:16px 0 18px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      display:grid;
+      place-items:center;
+      min-height: 300px;
+    }
+
+    .logo-frame{
+      width:min(100%, 420px);
+      aspect-ratio:1/1;
+      border-radius:26px;
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(245,197,66,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(245,197,66,.15);
+    }
+
+    .logo-frame img{
+      max-width:86%;
+      max-height:86%;
+      object-fit:contain;
+      display:none;
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,.25));
+    }
+
+    .logo-fallback{
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:18px;
+      width:100%;
+      height:100%;
+      color:var(--gold);
+      font-weight:900;
+      letter-spacing:1px;
+      background:
+        radial-gradient(circle at 50% 34%, rgba(255,255,255,.08), transparent 38%),
+        linear-gradient(180deg, rgba(245,197,66,.09), rgba(255,255,255,.03));
+    }
+    .logo-fallback .lion{
+      font-size:72px;
+      line-height:1;
+      margin-bottom:10px;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.20));
+    }
+    .logo-fallback .name{
+      font-size:clamp(28px, 5vw, 44px);
+    }
+    .logo-fallback .sub{
+      margin-top:6px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width: 0;
+      flex:1 1 170px;
+      padding:14px 18px;
+      border-radius:16px;
+      text-decoration:none;
+      font-weight:800;
+      color:#fff;
+      border:1px solid transparent;
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
+      transition: transform .15s ease, filter .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{ transform: translateY(1px); filter:brightness(1.03); }
+    .btn.line{background:linear-gradient(180deg, #33d165, #1e8f40);border-color:rgba(45,230,96,.25)}
+    .btn.msg{background:linear-gradient(180deg, #2b80ff, #155fce);border-color:rgba(24,119,242,.22)}
+    .btn.wa{background:linear-gradient(180deg, #31e07d, #17a64e);border-color:rgba(45,230,96,.18)}
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .stat{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(5,10,20,.45);
+      border:1px solid var(--border);
+      min-height:110px;
+    }
+    .stat b{
+      display:block;
+      color:var(--gold);
+      margin-bottom:6px;
+      font-size:15px;
+    }
+    .stat span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .section-title{
+      margin:0 0 8px;
+      font-size: clamp(24px, 4vw, 36px);
+      line-height:1.12;
+      color:var(--text);
+    }
+    .section-desc{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+    .contact{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      border-radius:18px;
+      background:rgba(5,10,20,.45);
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .contact:active{ transform: translateY(1px); filter:brightness(1.03); }
+    .icon{
+      width:44px;height:44px;border-radius:15px;
+      display:grid;place-items:center;
+      font-weight:900;color:#fff;flex:0 0 auto;
+      font-size:12px;
+      letter-spacing:.4px;
+    }
+    .icon.line{background:rgba(37,211,102,.18);color:var(--line)}
+    .icon.msg{background:rgba(24,119,242,.18);color:#66a6ff}
+    .icon.wa{background:rgba(37,211,102,.18);color:var(--wa)}
+    .contact b{display:block;margin-bottom:3px}
+    .contact span{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    .note{
+      margin-top:16px;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(245,197,66,.08);
+      border:1px solid rgba(245,197,66,.16);
+      color:#fff6d5;
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    .footer{
+      padding:18px 0 0;
+      text-align:center;
+      color:#9fb0cc;
+      font-size:13px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns:1fr; }
+      .btn{ min-width: 0; flex:1 1 100%; }
+      .stats{ grid-template-columns:1fr; }
+      .topbar{ flex-wrap:wrap; justify-content:center; }
+      .hero, .side{ padding:18px; }
+      .logo-shell{ min-height:260px; }
+    }
+
+    @media (max-width: 420px){
+      .wrap{ width: min(100% - 16px, 1120px); padding-top:12px; }
+      .topbar{ padding:12px; border-radius:18px; }
+      .hero, .side{ padding:16px; }
+      .hero-title{ font-size: 32px; }
+      .logo-shell{ min-height:220px; padding:14px; }
+      .logo-fallback .lion{ font-size:58px; }
+      .logo-fallback .name{ font-size:30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="badge">🦁</div>
+        <h1>LIONLAO</h1>
+      </div>
+      <div class="pill">ຕິດຕໍ່ເຮົາໄດ້ 24 ຊົ່ວໂມງ</div>
+    </header>
+
+    <main class="grid">
+      <section class="card hero">
+        <h2 class="hero-title">LIONLAO</h2>
+        <p class="lead">ຕິດຕໍ່ເຮົາໄດ້ 24 ຊົ່ວໂມງ<br>ให้บริการตลอด 24 ชั่วโมง</p>
+
+        <div class="logo-shell" aria-label="LIONLAO logo">
+          <div class="logo-frame">
+            <img id="brandLogo" src="logo.png" alt="LIONLAO logo" />
+            <div id="logoFallback" class="logo-fallback">
+              <div>
+                <div class="lion">🦁</div>
+                <div class="name">LIONLAO</div>
+                <div class="sub">ວາງໄຟລ໌ logo.png ໄວ້ຄູ່ກັນ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn line" href="https://line.me/R/ti/p/@678cugqy" target="_blank" rel="noopener noreferrer">LINE OA</a>
+          <a class="btn msg" href="https://m.me/757953220740329" target="_blank" rel="noopener noreferrer">Messenger</a>
+          <a class="btn wa" href="https://wa.me/message/KIS3TXUPRU6DN1" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>ລະບົບທີ່ດີ</b><span>ລະບົບສະຖຽນ ໃຊ້ງານງ່າຍ ແລະ ຮອງຮັບທຸກອຸປະກອນ</span></div>
+          <div class="stat"><b>ບໍລິການຍອດຢ້ຽມ</b><span>ພ້ອມດູແລ ແລະ ຕອບກັບຢ່າງຮວດເລັວ</span></div>
+          <div class="stat"><b>ສະດວກສະບາຍ</b><span>ໃຊ້ງານງ່າຍ ເຂົ້າໃຈງ່າຍ ໃນທຸກຂັ້ນຕອນ</span></div>
+          <div class="stat"><b>ປອດໄພ</b><span>ມີຄວາມໜ້າເຊື່ອຖື ແລະ ມັ່ນໃຈໄດ້ທຸກການໃຊ້ງານ</span></div>
+        </div>
+      </section>
+
+      <aside class="card side">
+        <h3 class="section-title">ຊ່ອງທາງຕິດຕໍ່</h3>
+        <p class="section-desc">ປຸ່ມແຕ່ລະອັນຖືກຕັ້ງຄ່າໄວ້ແລ້ວ ພ້ອມໃຫ້ໃຊ້ງານ</p>
+
+        <div class="contact-list">
+          <a class="contact" href="https://line.me/R/ti/p/@678cugqy" target="_blank" rel="noopener noreferrer">
+            <div class="icon line">LINE</div>
+            <div><b>LINE OA</b><span>https://line.me/R/ti/p/@678cugqy</span></div>
+          </a>
+          <a class="contact" href="https://m.me/757953220740329" target="_blank" rel="noopener noreferrer">
+            <div class="icon msg">MSG</div>
+            <div><b>Messenger</b><span>https://m.me/757953220740329</span></div>
+          </a>
+          <a class="contact" href="https://wa.me/message/KIS3TXUPRU6DN1" target="_blank" rel="noopener noreferrer">
+            <div class="icon wa">WA</div>
+            <div><b>WhatsApp</b><span>https://wa.me/message/KIS3TXUPRU6DN1</span></div>
+          </a>
+        </div>
+
+        <div class="note">
+          ໜ້າເວັບນີ້ຖືກປັບໃຫ້ເບົາ ແລະ ອ່ານງ່າຍໃນໂທລະສັບ.
+        </div>
+      </aside>
+    </main>
+
+    <div class="footer">© 2026 LIONLAO</div>
+  </div>
+
+  <script>
+    (function(){
+      const img = document.getElementById('brandLogo');
+      const fallback = document.getElementById('logoFallback');
+
+      function showFallback() {
+        if (fallback) fallback.style.display = 'grid';
+        if (img) img.style.display = 'none';
+      }
+
+      if (img) {
+        img.addEventListener('load', function(){
+          if (img.naturalWidth > 0) {
+            fallback.style.display = 'none';
+            img.style.display = 'block';
+          } else {
+            showFallback();
+          }
+        });
+        img.addEventListener('error', showFallback);
+        // In case the image is cached or unavailable, let fallback remain visible until load succeeds.
+        if (img.complete) {
+          if (img.naturalWidth > 0) {
+            fallback.style.display = 'none';
+            img.style.display = 'block';
+          } else {
+            showFallback();
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
