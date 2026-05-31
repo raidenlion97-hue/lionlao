@@ -134,14 +134,21 @@
     }
 
     .logo-shell{
-      margin:16px 0 18px;
-      padding:18px;
-      border-radius:22px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      display:grid;
-      place-items:center;
-      min-height: 300px;
+    margin:16px 0 18px;
+    padding:18px;
+    border-radius:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.10);
+    display:grid;
+    place-items:center;
+   }
+
+.logo-shell img{
+    width:min(260px, 80%);
+    height:auto;
+    display:block;
+    object-fit:contain;
+    filter:drop-shadow(0 0 18px rgba(255,215,0,.45));
     }
 
     .logo-frame{
@@ -351,6 +358,8 @@
         <p class="lead">ຕິດຕໍ່ເຮົາໄດ້ 24 ຊົ່ວໂມງ<br>ให้บริการตลอด 24 ชั่วโมง</p>
 
         <div class="logo-shell" aria-label="LIONLAO logo">
+    <img src="logo.png" alt="LIONLAO" class="hero-logo">
+</div>
           <div class="logo-frame">
             <img id="brandLogo" src="logo.png" alt="LIONLAO logo" />
             <div id="logoFallback" class="logo-fallback">
